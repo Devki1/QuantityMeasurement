@@ -1,7 +1,11 @@
 package com.bridgelabz.quantitymeasurement;
 
 public class QuantityMeasurement {
-    public static void main(String[] args) {
-        System.out.println("welcome in quantity measurement");
+    public String compare(Feet feet1, Feet feet2) {
+        if (feet1.equals(feet2))
+            return "equal";
+        return "not equal";
     }
 }
+
+
