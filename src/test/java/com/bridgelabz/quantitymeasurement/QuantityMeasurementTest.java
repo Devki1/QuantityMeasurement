@@ -206,5 +206,28 @@ public class QuantityMeasurementTest {
         Double result = quantityMeasurement.addTwoLengths(value1, value2);
         Assert.assertEquals(2.0, result, 0.0);
     }
+    @Test
+    public void givenOneKilogramValueAndOneGramValue_IfEqual_ShouldReturnTrue() {
+        Measurement value1 = new Measurement(1.0, UnitMeasurements.KILOGRAMS);
+        Measurement value2 = new Measurement(1000.0,UnitMeasurements.GRAMS);
+        boolean result = quantityMeasurement.compare(value1,value2);
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenOneTonneValueAndOneKilogramValue_IfEqual_ShouldReturnTrue() {
+        Measurement value1 = new Measurement(1.0, UnitMeasurements.TONNE);
+        Measurement value2 = new Measurement(1000.0, UnitMeasurements.KILOGRAMS);
+        boolean result = quantityMeasurement.compare(value1, value2);
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenOneTonneAndOneGramValue_WhenAdded_ShouldReturnResultInKilogram() {
+        Measurement value1  = new Measurement(1.0, UnitMeasurements.TONNE);
+        Measurement value2 = new Measurement(1000.0, UnitMeasurements.GRAMS);
+        Double result = quantityMeasurement.addTwoLengths(value1 , value2);
+        Assert.assertEquals(1001.0, result, 0.0);
+    }
 }
 
