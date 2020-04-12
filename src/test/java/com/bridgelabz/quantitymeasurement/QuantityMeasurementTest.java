@@ -3,17 +3,15 @@ package com.bridgelabz.quantitymeasurement;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.lang.invoke.VarHandle;
-
 public class QuantityMeasurementTest {
     QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
 
     @Test
     public void givenTwoFeetValues_IfCompared_ShouldReturnAppropriateResult() {
         Distance value1 = new Distance(0.0, UnitMeasurements.FEET);
-        Distance value2 = new Distance(0.0,   UnitMeasurements.FEET);
+        Distance value2 = new Distance(0.0, UnitMeasurements.FEET);
         Distance value3 = new Distance(7.0, UnitMeasurements.FEET);
-        boolean result1 = quantityMeasurement.compare(value1,value2);
+        boolean result1 = quantityMeasurement.compare(value1, value2);
         boolean result2 = quantityMeasurement.compare(value1, value3);
         Assert.assertEquals(true, result1);
         Assert.assertEquals(false, result2);
@@ -43,17 +41,18 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTwoObjects_IfValuesAreSame_ShouldReturnTrue() {
-        Distance value1 = new Distance(12.0,UnitMeasurements.FEET);
+        Distance value1 = new Distance(12.0, UnitMeasurements.FEET);
         Distance value2 = new Distance(12.0, UnitMeasurements.FEET);
-        boolean result = quantityMeasurement.compare(value1,value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
     }
+
     @Test
     public void givenTwoInchValues_IfCompared_ShouldReturnResult() {
         Distance value1 = new Distance(0.0, UnitMeasurements.INCH);
-        Distance value2 = new Distance(0.0,   UnitMeasurements.INCH);
+        Distance value2 = new Distance(0.0, UnitMeasurements.INCH);
         Distance value3 = new Distance(7.0, UnitMeasurements.INCH);
-        boolean result1 = quantityMeasurement.compare(value1,value2);
+        boolean result1 = quantityMeasurement.compare(value1, value2);
         boolean result2 = quantityMeasurement.compare(value1, value3);
         Assert.assertEquals(true, result1);
         Assert.assertEquals(false, result2);
@@ -83,9 +82,9 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTwoObject_IfValuesAreSame_ShouldReturnTrue() {
-        Distance value1 = new Distance(12.0,UnitMeasurements.INCH);
+        Distance value1 = new Distance(12.0, UnitMeasurements.INCH);
         Distance value2 = new Distance(12.0, UnitMeasurements.INCH);
-        boolean result = quantityMeasurement.compare(value1,value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
     }
 
@@ -94,7 +93,7 @@ public class QuantityMeasurementTest {
     public void givenThreeFeetAnd1Yard_ShouldReturnTrue() {
         Distance value1 = new Distance(3.0, UnitMeasurements.FEET);
         Distance value2 = new Distance(1.0, UnitMeasurements.YARD);
-        boolean result = quantityMeasurement.compare(value1,value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
     }
 
@@ -102,7 +101,7 @@ public class QuantityMeasurementTest {
     public void given1FeetAndOneYard_ShouldReturnFalse() {
         Distance value1 = new Distance(1.0, UnitMeasurements.FEET);
         Distance value2 = new Distance(1.0, UnitMeasurements.YARD);
-        boolean result = quantityMeasurement.compare(value1 ,value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(false, result);
     }
 
@@ -110,7 +109,7 @@ public class QuantityMeasurementTest {
     public void given1InchAnd1Yard_ShouldNotReturnTrue() {
         Distance value1 = new Distance(1.0, UnitMeasurements.INCH);
         Distance value2 = new Distance(1.0, UnitMeasurements.YARD);
-        boolean result = quantityMeasurement.compare(value1 , value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(false, result);
     }
 
@@ -118,7 +117,7 @@ public class QuantityMeasurementTest {
     public void given1YardAnd36Inch_ShouldNotReturnTrue() {
         Distance value1 = new Distance(1.0, UnitMeasurements.YARD);
         Distance value2 = new Distance(36.0, UnitMeasurements.INCH);
-        boolean result = quantityMeasurement.compare(value1 , value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
     }
 
@@ -126,7 +125,7 @@ public class QuantityMeasurementTest {
     public void given36InchAnd1Yard_ShouldReturnTrue() {
         Distance value1 = new Distance(36.0, UnitMeasurements.INCH);
         Distance value2 = new Distance(1.0, UnitMeasurements.YARD);
-        boolean result = quantityMeasurement.compare(value1 , value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
     }
 
@@ -134,14 +133,47 @@ public class QuantityMeasurementTest {
     public void given1YardAnd3Feet_ShouldReturnTrue() {
         Distance value1 = new Distance(1.0, UnitMeasurements.YARD);
         Distance value2 = new Distance(3.0, UnitMeasurements.FEET);
-        boolean result = quantityMeasurement.compare(value1,value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
     }
+
     @Test
     public void given2InchAnd5Centimeter_ShouldReturnTrue() {
         Distance value1 = new Distance(2.0, UnitMeasurements.INCH);
         Distance value2 = new Distance(5.0, UnitMeasurements.CENTIMETER);
-        boolean result = quantityMeasurement.compare(value1,value2);
+        boolean result = quantityMeasurement.compare(value1, value2);
         Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenTwoInchValues_WhenAdded_ShouldReturnResultInInch() {
+        Distance value1 = new Distance(2.0, UnitMeasurements.INCH);
+        Distance value2 = new Distance(2.0, UnitMeasurements.INCH);
+        Double result = quantityMeasurement.addTwoLengths(value1, value2);
+        Assert.assertEquals(4.0, result, 0.0);
+    }
+
+    @Test
+    public void givenOneFeetAndOneInchValue_WhenAdded_ShouldReturnResultInInch() {
+        Distance value1 = new Distance(1.0, UnitMeasurements.FEET);
+        Distance value2 = new Distance(2.0, UnitMeasurements.INCH);
+        Double result = quantityMeasurement.addTwoLengths(value1, value2);
+        Assert.assertEquals(14.0, result, 0.0);
+    }
+
+    @Test
+    public void givenTwoFeetValues_WhenAdded_ShouldReturnResultInInch() {
+        Distance value1 = new Distance(1.0, UnitMeasurements.FEET);
+        Distance value2 = new Distance(1.0, UnitMeasurements.FEET);
+        Double result = quantityMeasurement.addTwoLengths(value1, value2);
+        Assert.assertEquals(24.0, result, 0.0);
+    }
+
+    @Test
+    public void givenOneInchAndOneCentimeterValue_WhenAdded_ShouldReturnResultInInch() {
+        Distance value1 = new Distance(2.0, UnitMeasurements.INCH);
+        Distance value2 = new Distance(2.5, UnitMeasurements.CENTIMETER);
+        Double result = quantityMeasurement.addTwoLengths(value1, value2);
+        Assert.assertEquals(3.0, result, 0.0);
     }
 }
