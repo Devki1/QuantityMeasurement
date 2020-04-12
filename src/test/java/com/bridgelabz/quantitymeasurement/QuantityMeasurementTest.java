@@ -137,4 +137,11 @@ public class QuantityMeasurementTest {
         boolean result = quantityMeasurement.compare(value1,value2);
         Assert.assertEquals(true, result);
     }
+    @Test
+    public void given2InchAnd5Centimeter_ShouldReturnTrue() {
+        Distance value1 = new Distance(2.0, UnitMeasurements.INCH);
+        Distance value2 = new Distance(5.0, UnitMeasurements.CENTIMETER);
+        boolean result = quantityMeasurement.compare(value1,value2);
+        Assert.assertEquals(true, result);
+    }
 }
