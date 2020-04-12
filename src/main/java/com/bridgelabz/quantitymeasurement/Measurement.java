@@ -2,10 +2,10 @@ package com.bridgelabz.quantitymeasurement;
 
 import java.util.Objects;
 
-public class Distance {
+public class Measurement {
     Double distance;
 
-    public Distance(Double distance, UnitMeasurements unit) {
+    public Measurement(Double distance, UnitMeasurements unit) {
         this.distance = unit.convertToBaseValue(distance);
     }
 
@@ -13,7 +13,7 @@ public class Distance {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Distance distance1 = (Distance) o;
+        Measurement distance1 = (Measurement) o;
         return Objects.equals(distance, distance1.distance);
     }
 }
