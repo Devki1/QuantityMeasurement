@@ -229,5 +229,11 @@ public class QuantityMeasurementTest {
         Double result = quantityMeasurement.addTwoLengths(value1 , value2);
         Assert.assertEquals(1001.0, result, 0.0);
     }
+    @Test
+    public void givenTemperatureInCelsiusAndFahrenheit_IfEqual_ShouldReturnTrue() {
+        Measurement value1 = new Measurement(212.0, UnitMeasurements.FAHRENHEIT);
+        Measurement value2 = new Measurement(100.0, UnitMeasurements.CELSIUS);
+        boolean result = quantityMeasurement.compare(value1,value2);
+        Assert.assertEquals(true, result);
+    }
 }
-
