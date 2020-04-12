@@ -60,7 +60,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenTwoInchObjects_IfOneOfThemIsNull_ShouldReturnNotEqual() {
+    public void givenTwoInchObjects_IfOneOfThemIsNull_ShouldReturnFalse() {
         Inch inch1 = new Inch(0.0);
         Inch inch2  = null;
         boolean result1 = quantityMeasurement.compareInch(inch1,inch2);
@@ -68,12 +68,28 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenTwoInchObjects_IfObjectsAreSame_ShouldReturnEqual() {
+    public void givenTwoInchObjects_IfObjectsAreSame_ShouldReturnTrue() {
         Inch inch1 = new Inch(0.0);
         boolean result1 = quantityMeasurement.compareInch(inch1,inch1);
         Assert.assertEquals(true, result1);
     }
+
+    @Test
+    public void givenTwoInchObjects_IfTypeIsSame_ShouldReturnTrue() {
+        Inch inch1 = new Inch(0.0);
+        Inch inch2 = new Inch(0.0);
+        boolean result1 = quantityMeasurement.compareInch(inch1, inch2);
+        Assert.assertEquals(true, result1);
+    }
+    @Test
+    public void givenTwoInchObjects_IfValuesAreSame_ShouldReturnTrue() {
+        Inch inch1 = new Inch(12.0);
+        Inch inch2 = new Inch(12.0);
+        boolean result1 = quantityMeasurement.compareInch(inch1,inch2);
+        Assert.assertEquals(true, result1);
+    }
 }
+
 
 
 
